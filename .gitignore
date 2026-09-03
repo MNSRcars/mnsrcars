@@ -48,3 +48,7 @@ pnpm-debug.log*
 *.bak
 
 temp-branding.txt
+
+*.bak
+
+temp-branding.txt
