@@ -1,0 +1,19 @@
+create extension if not exists "pgcrypto";
+create extension if not exists "btree_gist";
+
+create type public.user_role as enum ('super_admin','admin','manager','agent','accountant');
+create type public.vehicle_status as enum ('available','reserved','rented','maintenance','inactive');
+create type public.vehicle_category as enum ('economy','compact','sedan','suv','luxury','van');
+create type public.transmission_type as enum ('manual','automatic');
+create type public.fuel_type as enum ('petrol','diesel','hybrid','electric');
+create type public.reservation_status as enum ('pending','confirmed','cancelled','rejected','rented','completed','no_show');
+create type public.payment_status as enum ('pending','authorized','paid','failed','refunded','cancelled');
+create type public.payment_method as enum ('cash','bank_transfer','card','online','other');
+create type public.maintenance_status as enum ('planned','in_progress','completed','cancelled');
+create type public.notification_channel as enum ('email','sms','whatsapp','system');
+create type public.notification_status as enum ('pending','sent','failed','cancelled');
+create type public.pricing_type as enum ('per_day','per_rental','fixed');
+create type public.inspection_type as enum ('pickup','return');
+create type public.damage_severity as enum ('minor','moderate','severe');
+create type public.damage_status as enum ('reported','repaired','invoiced','closed');
+create type public.rental_contract_status as enum ('draft','pending_signature','signed','active','completed','cancelled');
