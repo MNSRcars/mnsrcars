@@ -62,10 +62,8 @@ export async function getPublicVehicles(): Promise<PublicVehicleListItem[]> {
     .order("price_per_day", { ascending: true });
 
   if (error) {
-    throw new Error("Impossible de recuperer les vehicules publics.");
-  }
-
-  return data ?? [];
+  console.warn("⚠️ Attention: Pas de véhicules trouvés - utilisation d'une liste vide");
+  return [];
 }
 
 export async function getPublicVehicleBySlug(slug: string): Promise<PublicVehicleDetail | null> {
