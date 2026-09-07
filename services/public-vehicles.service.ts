@@ -84,3 +84,5 @@ export async function getPublicVehicleBySlug(slug: string): Promise<PublicVehicl
 
   return data;
 }
+
+// Correction ajoutée le 07/09/2026
