@@ -78,9 +78,10 @@ export async function getPublicVehicleBySlug(slug: string): Promise<PublicVehicl
     .eq("is_public", true)
     .maybeSingle();
 
-  if (error) {
-    throw new Error("Impossible de recuperer ce vehicule.");
-  }
+ if (error) {
+  console.warn("Attention: Impossible de recuperer les vehicules publics:", error.message);
+  return [];
+}
 
   return data;
 }
