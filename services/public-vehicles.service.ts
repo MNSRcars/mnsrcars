@@ -1,4 +1,4 @@
-import "server-only";
+﻿import "server-only";
 
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { Database } from "@/lib/database.types";
@@ -62,8 +62,10 @@ export async function getPublicVehicles(): Promise<PublicVehicleListItem[]> {
     .order("price_per_day", { ascending: true });
 
   if (error) {
-  console.warn("⚠️ Attention: Pas de véhicules trouvés - utilisation d'une liste vide");
-  return [];
+    console.warn("Warning vehicles:", error); return [];
+  }
+
+  return data ?? [];
 }
 
 export async function getPublicVehicleBySlug(slug: string): Promise<PublicVehicleDetail | null> {
@@ -78,12 +80,9 @@ export async function getPublicVehicleBySlug(slug: string): Promise<PublicVehicl
     .eq("is_public", true)
     .maybeSingle();
 
- if (error) {
-  console.warn("Attention: Impossible de recuperer les vehicules publics:", error.message);
-  return [];
-}
+  if (error) {
+    throw new Error("Impossible de recuperer ce vehicule.");
+  }
 
   return data;
 }
-
-// Correction ajoutée le 07/09/2026
